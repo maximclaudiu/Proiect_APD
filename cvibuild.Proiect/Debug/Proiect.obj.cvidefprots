@@ -1,15 +1,30 @@
 [main]
 Class="Function"
 Prototype="int main(int argc, char *argv[]);"
-SourceLocation="f:\achizitia_si_prelucrarea_datelor\proiect\Proiect.c:47:5"
+SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:54:5"
 
 [panelCB]
 Class="Function"
 Prototype="int panelCB(int panel, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="f:\achizitia_si_prelucrarea_datelor\proiect\Proiect.c:70:17"
+SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:77:17"
 
 [OnLoadButtonCB]
 Class="Function"
 Prototype="int OnLoadButtonCB(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="f:\achizitia_si_prelucrarea_datelor\proiect\Proiect.c:89:17"
+SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:96:17"
+
+[ApplyCB]
+Class="Function"
+Prototype="int ApplyCB(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:145:17"
+
+[PrevCB]
+Class="Function"
+Prototype="int PrevCB(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:180:17"
+
+[NextCB]
+Class="Function"
+Prototype="int NextCB(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:203:17"
 

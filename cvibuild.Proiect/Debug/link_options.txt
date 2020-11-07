@@ -1,20 +1,20 @@
 -nologo
--out:f:\achizitia_si_prelucrarea_datelor\proiect\cvibuild.Proiect\Debug\Proiect.exe
+-out:f:\achizitia_si_prelucrarea_datelor\Proiect_APD\cvibuild.Proiect\Debug\Proiect.exe
 -arch:x86
 -timestamp
 -debug:2
 -loadextmod
--project:f:\achizitia_si_prelucrarea_datelor\proiect\Proiect.prj
--res:f:\achizitia_si_prelucrarea_datelor\proiect\cvibuild.Proiect\Debug\resources.res
+-project:f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.prj
+-res:f:\achizitia_si_prelucrarea_datelor\Proiect_APD\cvibuild.Proiect\Debug\resources.res
 -entry:_CVIWinMainStartupCodeForDebugging@0
 -base:0x400000
--linked:f:\achizitia_si_prelucrarea_datelor\proiect\cvibuild.Proiect\Debug\linkersummary.txt
--dlldeps:f:\achizitia_si_prelucrarea_datelor\proiect\cvibuild.Proiect\Debug\dlldependencies.txt
--licensing:f:\achizitia_si_prelucrarea_datelor\proiect\cvibuild.Proiect\Debug\linkerlicensing.txt
--browsedeps:f:\achizitia_si_prelucrarea_datelor\proiect\cvibuild.Proiect\Debug\moduledependencies.txt
+-linked:f:\achizitia_si_prelucrarea_datelor\Proiect_APD\cvibuild.Proiect\Debug\linkersummary.txt
+-dlldeps:f:\achizitia_si_prelucrarea_datelor\Proiect_APD\cvibuild.Proiect\Debug\dlldependencies.txt
+-licensing:f:\achizitia_si_prelucrarea_datelor\Proiect_APD\cvibuild.Proiect\Debug\linkerlicensing.txt
+-browsedeps:f:\achizitia_si_prelucrarea_datelor\Proiect_APD\cvibuild.Proiect\Debug\moduledependencies.txt
 -stackreserve:1048576
 -stackcommit:4096
--in:f:\achizitia_si_prelucrarea_datelor\proiect\cvibuild.Proiect\Debug\Proiect.obj
+-in:f:\achizitia_si_prelucrarea_datelor\Proiect_APD\cvibuild.Proiect\Debug\Proiect.obj
 -more:c:\program files (x86)\national instruments\cvi2020\bin\msvc\cvistart.lib
 -more:c:\program files (x86)\national instruments\cvi2020\bin\msvc\cvi.lib
 -more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\advanlys.lib

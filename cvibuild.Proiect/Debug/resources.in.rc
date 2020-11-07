@@ -2,7 +2,7 @@
 #include "C:\Program Files (x86)\National Instruments\Shared\MSDTRedistributables\SDKHeaderFiles\8.1\winver.h"
 
 2 ICON "c:\\program files (x86)\\national instruments\\cvi2020\\bin\\default.ico"
-1 24 "f:\\achizitia_si_prelucrarea_datelor\\proiect\\cvibuild.Proiect\\Debug\\manifest.xml"
+1 24 "f:\\achizitia_si_prelucrarea_datelor\\Proiect_APD\\cvibuild.Proiect\\Debug\\manifest.xml"
 
 
 STRINGTABLE DISCARDABLE

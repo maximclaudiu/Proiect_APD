@@ -1,1 +1,1 @@
--force-include-file "Proiect.c";"f:\achizitia_si_prelucrarea_datelor\proiect\Proiect.c" -force-include-file "Proiect.h";"f:\achizitia_si_prelucrarea_datelor\proiect\Proiect.h" 
+-force-include-file "Proiect.c";"f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c" -force-include-file "Proiect.h";"f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.h" 

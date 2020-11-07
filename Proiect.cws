@@ -1,6 +1,6 @@
 [Workspace Header]
 Version = 2000
-Pathname = "/f/achizitia_si_prelucrarea_datelor/proiect/Proiect.cws"
+Pathname = "/f/achizitia_si_prelucrarea_datelor/Proiect_APD/Proiect.cws"
 CVI Dir = "/c/program files (x86)/national instruments/cvi2020"
 CVI Shared Dir = "/C/Program Files (x86)/National Instruments/Shared/CVI"
 CVI Pub Local Dir = "/C/ProgramData/National Instruments/CVI2020"
@@ -12,12 +12,12 @@ VXIplug&play Framework 64-bit Dir = "/C/Program Files/IVI Foundation/VISA/win64"
 Number of Projects = 1
 Active Project = 1
 Project 0001 = "Proiect.prj"
-Drag Bar Left = 133
+Drag Bar Left = 126
 Window Top = 31
 Window Left = 1
 Window Bottom = 1039
 Window Right = 959
-Maximized = True
+Maximized = False
 Maximized Children = True
 Max32 Number Of Errors = 20
 Track Include File Dependencies = True
@@ -32,7 +32,7 @@ Break At First Statement = False
 Sort Type = "File Name"
 Number of Opened Files = 3
 Window Confinement Region Enabled = True
-MainColumnWidth = 116
+MainColumnWidth = 109
 FileDateColumnWidth = 70
 FileSizeColumnWidth = 70
 
@@ -46,9 +46,9 @@ Batch Build Release = False
 Batch Build Debug = False
 
 [File 0001]
-Path = "/f/achizitia_si_prelucrarea_datelor/proiect/Proiect.uir"
+Path = "/f/achizitia_si_prelucrarea_datelor/Proiect_APD/Proiect.uir"
 File Type = "User Interface Resource"
-Disk Date = 3687600732
+Disk Date = 3687610544
 In Projects = "1,"
 Window Top = 64
 Window Left = 26
@@ -57,19 +57,19 @@ Window Width = 602
 Window Z-Order = 2
 
 [File 0002]
-Path = "/f/achizitia_si_prelucrarea_datelor/proiect/Proiect.c"
+Path = "/f/achizitia_si_prelucrarea_datelor/Proiect_APD/Proiect.c"
 File Type = "CSource"
-Disk Date = 3687600278
+Disk Date = 3687612707
 In Projects = "1,"
-Source Window State = "1,97,97,97,16,16,16,0,0,0,0,0,0,0,0,0,71,0,97,16,401,602,1,0,"
+Source Window State = "1,190,190,190,17,17,17,0,0,0,0,0,0,0,0,0,179,0,190,17,401,602,1,0,"
 Window Top = 250
 Window Left = 122
 Window Z-Order = 1
 
 [File 0003]
-Path = "/f/achizitia_si_prelucrarea_datelor/proiect/Proiect.h"
+Path = "/f/achizitia_si_prelucrarea_datelor/Proiect_APD/Proiect.h"
 File Type = "Include"
-Disk Date = 3687600732
+Disk Date = 3687610544
 In Projects = "1,"
 Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,401,602,1,0,"
 Window Top = 281
@@ -77,15 +77,16 @@ Window Left = 138
 Window Z-Order = 3
 
 [File 0004]
-Path = "/f/achizitia_si_prelucrarea_datelor/proiect/cvibuild.Proiect/Debug/Proiect.obj"
+Path Line0001 = "/f/achizitia_si_prelucrarea_datelor/Proiect_APD/cvibuild.Proiect/Debug/Proiect.o"
+Path Line0002 = "bj"
 File Type = "Object"
 Disk Date = 0
 In Projects = "1,"
 
 [Tab Order]
-Tab 0001 = "/f/achizitia_si_prelucrarea_datelor/proiect/Proiect.uir"
-Tab 0002 = "/f/achizitia_si_prelucrarea_datelor/proiect/Proiect.c"
-Tab 0003 = "/f/achizitia_si_prelucrarea_datelor/proiect/Proiect.h"
+Tab 0001 = "/f/achizitia_si_prelucrarea_datelor/Proiect_APD/Proiect.uir"
+Tab 0002 = "/f/achizitia_si_prelucrarea_datelor/Proiect_APD/Proiect.c"
+Tab 0003 = "/f/achizitia_si_prelucrarea_datelor/Proiect_APD/Proiect.h"
 
 [Default Build Config 0001 Debug]
 Generate Browse Info = True
