@@ -1,0 +1,15 @@
+[main]
+Class="Function"
+Prototype="int main(int argc, char *argv[]);"
+SourceLocation="f:\achizitia_si_prelucrarea_datelor\proiect\Proiect.c:47:5"
+
+[panelCB]
+Class="Function"
+Prototype="int panelCB(int panel, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="f:\achizitia_si_prelucrarea_datelor\proiect\Proiect.c:70:17"
+
+[OnLoadButtonCB]
+Class="Function"
+Prototype="int OnLoadButtonCB(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="f:\achizitia_si_prelucrarea_datelor\proiect\Proiect.c:89:17"
+
