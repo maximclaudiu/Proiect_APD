@@ -16,7 +16,7 @@ Drag Bar Left = 126
 Window Top = 31
 Window Left = 1
 Window Bottom = 1039
-Window Right = 959
+Window Right = 1233
 Maximized = False
 Maximized Children = True
 Max32 Number Of Errors = 20
@@ -54,14 +54,14 @@ Window Top = 64
 Window Left = 26
 Window Height = 401
 Window Width = 602
-Window Z-Order = 2
+Window Z-Order = 3
 
 [File 0002]
 Path = "/f/achizitia_si_prelucrarea_datelor/Proiect_APD/Proiect.c"
 File Type = "CSource"
-Disk Date = 3687612707
+Disk Date = 3688212468
 In Projects = "1,"
-Source Window State = "1,190,190,190,17,17,17,0,0,0,0,0,0,0,0,0,179,0,190,17,401,602,1,0,"
+Source Window State = "1,231,231,231,5,5,5,0,0,0,0,0,0,0,0,0,212,0,231,5,401,602,1,0,"
 Window Top = 250
 Window Left = 122
 Window Z-Order = 1
@@ -71,16 +71,16 @@ Path = "/f/achizitia_si_prelucrarea_datelor/Proiect_APD/Proiect.h"
 File Type = "Include"
 Disk Date = 3687610544
 In Projects = "1,"
-Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,401,602,1,0,"
+Source Window State = "1,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,401,602,1,0,"
 Window Top = 281
 Window Left = 138
-Window Z-Order = 3
+Window Z-Order = 2
 
 [File 0004]
 Path Line0001 = "/f/achizitia_si_prelucrarea_datelor/Proiect_APD/cvibuild.Proiect/Debug/Proiect.o"
 Path Line0002 = "bj"
 File Type = "Object"
-Disk Date = 0
+Disk Date = 3688206726
 In Projects = "1,"
 
 [Tab Order]

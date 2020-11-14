@@ -1,0 +1,246 @@
+.TH "Proiect.c" 3 "Sat Nov 14 2020" "Version Version 1.1" "Proiect_APD_Etapa1" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Proiect.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <advanlys\&.h>\fP
+.br
+\fC#include <ansi_c\&.h>\fP
+.br
+\fC#include <cvirte\&.h>\fP
+.br
+\fC#include <formatio\&.h>\fP
+.br
+\fC#include <userint\&.h>\fP
+.br
+\fC#include 'Proiect\&.h'\fP
+.br
+\fC#include 'toolbox\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBSAMPLE_RATE\fP   0"
+.br
+.ti -1c
+.RI "#define \fBNPOINTS\fP   1"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBMinMaxMed\fP (int panel)"
+.br
+.ti -1c
+.RI "int \fBmain\fP (int argc, char *argv[])"
+.br
+.RI "HIFN The main entry-point function\&. "
+.ti -1c
+.RI "int CVICALLBACK \fBpanelCB\fP (int panel, int event, void *callbackData, int eventData1, int eventData2)"
+.br
+.RI "HIFN Exit when the user dismisses the panel\&. "
+.ti -1c
+.RI "int CVICALLBACK \fBOnLoadButtonCB\fP (int panel, int control, int event, void *callbackData, int eventData1, int eventData2)"
+.br
+.ti -1c
+.RI "int CVICALLBACK \fBApplyCB\fP (int panel, int control, int event, void *callbackData, int eventData1, int eventData2)"
+.br
+.ti -1c
+.RI "int CVICALLBACK \fBPrevCB\fP (int panel, int control, int event, void *callbackData, int eventData1, int eventData2)"
+.br
+.ti -1c
+.RI "int CVICALLBACK \fBNextCB\fP (int panel, int control, int event, void *callbackData, int eventData1, int eventData2)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "int \fBpanelHandle\fP = 0"
+.br
+.ti -1c
+.RI "double \fBmin\fP"
+.br
+.ti -1c
+.RI "double \fBmax\fP"
+.br
+.ti -1c
+.RI "double \fBsum\fP"
+.br
+.ti -1c
+.RI "double \fBmedian\fP"
+.br
+.ti -1c
+.RI "double \fBalpha\fP"
+.br
+.ti -1c
+.RI "int \fBcount\fP =0"
+.br
+.ti -1c
+.RI "int \fBfiltered\fP =0"
+.br
+.ti -1c
+.RI "int \fBwaveInfo\fP [2]"
+.br
+.ti -1c
+.RI "double \fBsampleRate\fP = 0\&.0"
+.br
+.ti -1c
+.RI "int \fBnpoints\fP = 0"
+.br
+.ti -1c
+.RI "double * \fBwaveData\fP = 0"
+.br
+.ti -1c
+.RI "double * \fBwaveFiltered\fP = 0"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define NPOINTS   1"
+
+.PP
+Definition at line 114 of file Proiect\&.c\&.
+.SS "#define SAMPLE_RATE   0"
+
+.PP
+Definition at line 113 of file Proiect\&.c\&.
+.SH "Function Documentation"
+.PP 
+.SS "int CVICALLBACK ApplyCB (int panel, int control, int event, void * callbackData, int eventData1, int eventData2)"
+Stergerea graficului vechi\&.
+.PP
+Alegerea optiunii de filtrare\&.
+.PP
+Filtrele de mediere pe 16 si 32\&.
+.PP
+Filtrul de ordin I\&.
+.PP
+Reafisarea noilor grafice\&.
+.PP
+Definition at line 156 of file Proiect\&.c\&.
+.SS "int main (int argc, char * argv[])"
+
+.PP
+HIFN The main entry-point function\&. initialize and load resources
+.PP
+display the panel and run the user interface
+.PP
+clean up
+.PP
+Definition at line 76 of file Proiect\&.c\&.
+.SS "void MinMaxMed (int panel)"
+Calculul Min, Max, Medie, Dispersie, Mediana\&.
+.PP
+Minim si Maxim\&.
+.PP
+Medie si Dispersie\&.
+.PP
+Mediana\&.
+.PP
+Definition at line 54 of file Proiect\&.c\&.
+.SS "int CVICALLBACK NextCB (int panel, int control, int event, void * callbackData, int eventData1, int eventData2)"
+Verificare si actualizare pagina actuala\&.
+.PP
+Stergerea vechilor grafice\&.
+.PP
+Reafisarea noilor grafice\&.
+.PP
+Afisarea noilor Min, Max, Medie, Dispersie, Mediana\&.
+.PP
+Definition at line 228 of file Proiect\&.c\&.
+.SS "int CVICALLBACK OnLoadButtonCB (int panel, int control, int event, void * callbackData, int eventData1, int eventData2)"
+Executa script python pentru conversia unui fisierului \&.wav in \&.txt
+.PP
+Astept sa fie generate cele doua fisiere (modificati timpul daca este necesar
+.PP
+Incarc informatiile privind rata de esantionare si numarul de valori
+.PP
+Alocare memorie pentru numarul de puncte
+.PP
+Incarcare din fisierul \&.txt in memorie (vector)
+.PP
+Afisare pe grapf
+.PP
+Afisare Min, Max, Medie, Dispersie, Mediana\&.
+.PP
+Definition at line 118 of file Proiect\&.c\&.
+.SS "int CVICALLBACK panelCB (int panel, int event, void * callbackData, int eventData1, int eventData2)"
+
+.PP
+HIFN Exit when the user dismisses the panel\&. 
+.PP
+Definition at line 99 of file Proiect\&.c\&.
+.SS "int CVICALLBACK PrevCB (int panel, int control, int event, void * callbackData, int eventData1, int eventData2)"
+Verificare si actualizare pagina actuala\&.
+.PP
+Stergerea vechilor grafice\&.
+.PP
+Reafisarea noilor grafice\&.
+.PP
+Afisarea noilor Min, Max, Medie, Dispersie, Mediana\&.
+.PP
+Definition at line 198 of file Proiect\&.c\&.
+.SH "Variable Documentation"
+.PP 
+.SS "double alpha"
+
+.PP
+Definition at line 33 of file Proiect\&.c\&.
+.SS "int count =0"
+
+.PP
+Definition at line 35 of file Proiect\&.c\&.
+.SS "int filtered =0"
+
+.PP
+Definition at line 35 of file Proiect\&.c\&.
+.SS "double max"
+
+.PP
+Definition at line 32 of file Proiect\&.c\&.
+.SS "double median"
+
+.PP
+Definition at line 32 of file Proiect\&.c\&.
+.SS "double min"
+
+.PP
+Definition at line 32 of file Proiect\&.c\&.
+.SS "int npoints = 0"
+
+.PP
+Definition at line 47 of file Proiect\&.c\&.
+.SS "int panelHandle = 0"
+
+.PP
+Definition at line 31 of file Proiect\&.c\&.
+.SS "double sampleRate = 0\&.0"
+
+.PP
+Definition at line 46 of file Proiect\&.c\&.
+.SS "double sum"
+
+.PP
+Definition at line 32 of file Proiect\&.c\&.
+.SS "double* waveData = 0"
+
+.PP
+Definition at line 48 of file Proiect\&.c\&.
+.SS "double* waveFiltered = 0"
+
+.PP
+Definition at line 49 of file Proiect\&.c\&.
+.SS "int waveInfo[2]"
+
+.PP
+Definition at line 44 of file Proiect\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Proiect_APD_Etapa1 from the source code\&.

@@ -1,0 +1,25 @@
+var _proiect_8c =
+[
+    [ "NPOINTS", "_proiect_8c.html#a046c61fd31a06b2051fa0f57e626ee65", null ],
+    [ "SAMPLE_RATE", "_proiect_8c.html#a4b76a0c2859cfd819a343a780070ee2b", null ],
+    [ "ApplyCB", "_proiect_8c.html#a829885ce47e0197033489ac70a9156eb", null ],
+    [ "main", "_proiect_8c.html#a0ddf1224851353fc92bfbff6f499fa97", null ],
+    [ "MinMaxMed", "_proiect_8c.html#a05ffe81f76b198f4b26beaab8ec83bc6", null ],
+    [ "NextCB", "_proiect_8c.html#a2e7302310f7b0eff4315ee418505f3c2", null ],
+    [ "OnLoadButtonCB", "_proiect_8c.html#ad10bcf5d390af1e31d784cf6caca0b0e", null ],
+    [ "panelCB", "_proiect_8c.html#a6d979a129d23db07fb3efbe73be7969c", null ],
+    [ "PrevCB", "_proiect_8c.html#a4714c06c150df8bb80a1957ea34156af", null ],
+    [ "alpha", "_proiect_8c.html#a20f4c4490bc8ecbdd1ffcb79acce6035", null ],
+    [ "count", "_proiect_8c.html#ad43c3812e6d13e0518d9f8b8f463ffcf", null ],
+    [ "filtered", "_proiect_8c.html#ac9abe8bc6dc21fe829fc7f637b7719bd", null ],
+    [ "max", "_proiect_8c.html#a0b0ede69e8156eb97acc579b88e883de", null ],
+    [ "median", "_proiect_8c.html#a5875453a3de38cab915ed96031184e11", null ],
+    [ "min", "_proiect_8c.html#aad36546e8175d2922bee165fe028fedc", null ],
+    [ "npoints", "_proiect_8c.html#a515ec0fe2abce5449e37ae520974cf5f", null ],
+    [ "panelHandle", "_proiect_8c.html#a8055542f0409de69de9969edbb0a23c5", null ],
+    [ "sampleRate", "_proiect_8c.html#a2bd79d2ab2dfb6aeaf75c2878ad30e1f", null ],
+    [ "sum", "_proiect_8c.html#a2943e5895f5488ed44ed4a86e59dcf1b", null ],
+    [ "waveData", "_proiect_8c.html#a3ba67a2eb02a342ef9692afc721f2fbc", null ],
+    [ "waveFiltered", "_proiect_8c.html#a948ae0d6c5a994b59c0eed7a40095b0c", null ],
+    [ "waveInfo", "_proiect_8c.html#a4bfbfbccbbd8c8eb48eba57725c7413b", null ]
+];

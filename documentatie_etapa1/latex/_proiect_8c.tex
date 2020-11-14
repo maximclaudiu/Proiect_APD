@@ -1,0 +1,341 @@
+\hypertarget{_proiect_8c}{}\doxysection{Proiect.\+c File Reference}
+\label{_proiect_8c}\index{Proiect.c@{Proiect.c}}
+{\ttfamily \#include $<$advanlys.\+h$>$}\newline
+{\ttfamily \#include $<$ansi\+\_\+c.\+h$>$}\newline
+{\ttfamily \#include $<$cvirte.\+h$>$}\newline
+{\ttfamily \#include $<$formatio.\+h$>$}\newline
+{\ttfamily \#include $<$userint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Proiect.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}toolbox.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_proiect_8c_a4b76a0c2859cfd819a343a780070ee2b}{S\+A\+M\+P\+L\+E\+\_\+\+R\+A\+TE}}~0
+\item 
+\#define \mbox{\hyperlink{_proiect_8c_a046c61fd31a06b2051fa0f57e626ee65}{N\+P\+O\+I\+N\+TS}}~1
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_proiect_8c_a05ffe81f76b198f4b26beaab8ec83bc6}{Min\+Max\+Med}} (int panel)
+\item 
+int \mbox{\hyperlink{_proiect_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em H\+I\+FN The main entry-\/point function. \end{DoxyCompactList}\item 
+int C\+V\+I\+C\+A\+L\+L\+B\+A\+CK \mbox{\hyperlink{_proiect_8c_a6d979a129d23db07fb3efbe73be7969c}{panel\+CB}} (int panel, int event, void $\ast$callback\+Data, int event\+Data1, int event\+Data2)
+\begin{DoxyCompactList}\small\item\em H\+I\+FN Exit when the user dismisses the panel. \end{DoxyCompactList}\item 
+int C\+V\+I\+C\+A\+L\+L\+B\+A\+CK \mbox{\hyperlink{_proiect_8c_ad10bcf5d390af1e31d784cf6caca0b0e}{On\+Load\+Button\+CB}} (int panel, int control, int event, void $\ast$callback\+Data, int event\+Data1, int event\+Data2)
+\item 
+int C\+V\+I\+C\+A\+L\+L\+B\+A\+CK \mbox{\hyperlink{_proiect_8c_a829885ce47e0197033489ac70a9156eb}{Apply\+CB}} (int panel, int control, int event, void $\ast$callback\+Data, int event\+Data1, int event\+Data2)
+\item 
+int C\+V\+I\+C\+A\+L\+L\+B\+A\+CK \mbox{\hyperlink{_proiect_8c_a4714c06c150df8bb80a1957ea34156af}{Prev\+CB}} (int panel, int control, int event, void $\ast$callback\+Data, int event\+Data1, int event\+Data2)
+\item 
+int C\+V\+I\+C\+A\+L\+L\+B\+A\+CK \mbox{\hyperlink{_proiect_8c_a2e7302310f7b0eff4315ee418505f3c2}{Next\+CB}} (int panel, int control, int event, void $\ast$callback\+Data, int event\+Data1, int event\+Data2)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{_proiect_8c_a8055542f0409de69de9969edbb0a23c5}{panel\+Handle}} = 0
+\item 
+double \mbox{\hyperlink{_proiect_8c_aad36546e8175d2922bee165fe028fedc}{min}}
+\item 
+double \mbox{\hyperlink{_proiect_8c_a0b0ede69e8156eb97acc579b88e883de}{max}}
+\item 
+double \mbox{\hyperlink{_proiect_8c_a2943e5895f5488ed44ed4a86e59dcf1b}{sum}}
+\item 
+double \mbox{\hyperlink{_proiect_8c_a5875453a3de38cab915ed96031184e11}{median}}
+\item 
+double \mbox{\hyperlink{_proiect_8c_a20f4c4490bc8ecbdd1ffcb79acce6035}{alpha}}
+\item 
+int \mbox{\hyperlink{_proiect_8c_ad43c3812e6d13e0518d9f8b8f463ffcf}{count}} =0
+\item 
+int \mbox{\hyperlink{_proiect_8c_ac9abe8bc6dc21fe829fc7f637b7719bd}{filtered}} =0
+\item 
+int \mbox{\hyperlink{_proiect_8c_a4bfbfbccbbd8c8eb48eba57725c7413b}{wave\+Info}} \mbox{[}2\mbox{]}
+\item 
+double \mbox{\hyperlink{_proiect_8c_a2bd79d2ab2dfb6aeaf75c2878ad30e1f}{sample\+Rate}} = 0.\+0
+\item 
+int \mbox{\hyperlink{_proiect_8c_a515ec0fe2abce5449e37ae520974cf5f}{npoints}} = 0
+\item 
+double $\ast$ \mbox{\hyperlink{_proiect_8c_a3ba67a2eb02a342ef9692afc721f2fbc}{wave\+Data}} = 0
+\item 
+double $\ast$ \mbox{\hyperlink{_proiect_8c_a948ae0d6c5a994b59c0eed7a40095b0c}{wave\+Filtered}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_proiect_8c_a046c61fd31a06b2051fa0f57e626ee65}\label{_proiect_8c_a046c61fd31a06b2051fa0f57e626ee65}} 
+\index{Proiect.c@{Proiect.c}!NPOINTS@{NPOINTS}}
+\index{NPOINTS@{NPOINTS}!Proiect.c@{Proiect.c}}
+\doxysubsubsection{\texorpdfstring{NPOINTS}{NPOINTS}}
+{\footnotesize\ttfamily \#define N\+P\+O\+I\+N\+TS~1}
+
+
+
+Definition at line 114 of file Proiect.\+c.
+
+\mbox{\Hypertarget{_proiect_8c_a4b76a0c2859cfd819a343a780070ee2b}\label{_proiect_8c_a4b76a0c2859cfd819a343a780070ee2b}} 
+\index{Proiect.c@{Proiect.c}!SAMPLE\_RATE@{SAMPLE\_RATE}}
+\index{SAMPLE\_RATE@{SAMPLE\_RATE}!Proiect.c@{Proiect.c}}
+\doxysubsubsection{\texorpdfstring{SAMPLE\_RATE}{SAMPLE\_RATE}}
+{\footnotesize\ttfamily \#define S\+A\+M\+P\+L\+E\+\_\+\+R\+A\+TE~0}
+
+
+
+Definition at line 113 of file Proiect.\+c.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_proiect_8c_a829885ce47e0197033489ac70a9156eb}\label{_proiect_8c_a829885ce47e0197033489ac70a9156eb}} 
+\index{Proiect.c@{Proiect.c}!ApplyCB@{ApplyCB}}
+\index{ApplyCB@{ApplyCB}!Proiect.c@{Proiect.c}}
+\doxysubsubsection{\texorpdfstring{ApplyCB()}{ApplyCB()}}
+{\footnotesize\ttfamily int C\+V\+I\+C\+A\+L\+L\+B\+A\+CK Apply\+CB (\begin{DoxyParamCaption}\item[{int}]{panel,  }\item[{int}]{control,  }\item[{int}]{event,  }\item[{void $\ast$}]{callback\+Data,  }\item[{int}]{event\+Data1,  }\item[{int}]{event\+Data2 }\end{DoxyParamCaption})}
+
+Stergerea graficului vechi.
+
+Alegerea optiunii de filtrare.
+
+Filtrele de mediere pe 16 si 32.
+
+Filtrul de ordin I.
+
+Reafisarea noilor grafice.
+
+Definition at line 156 of file Proiect.\+c.
+
+\mbox{\Hypertarget{_proiect_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{_proiect_8c_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{Proiect.c@{Proiect.c}!main@{main}}
+\index{main@{main}!Proiect.c@{Proiect.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+H\+I\+FN The main entry-\/point function. 
+
+initialize and load resources
+
+display the panel and run the user interface
+
+clean up
+
+Definition at line 76 of file Proiect.\+c.
+
+\mbox{\Hypertarget{_proiect_8c_a05ffe81f76b198f4b26beaab8ec83bc6}\label{_proiect_8c_a05ffe81f76b198f4b26beaab8ec83bc6}} 
+\index{Proiect.c@{Proiect.c}!MinMaxMed@{MinMaxMed}}
+\index{MinMaxMed@{MinMaxMed}!Proiect.c@{Proiect.c}}
+\doxysubsubsection{\texorpdfstring{MinMaxMed()}{MinMaxMed()}}
+{\footnotesize\ttfamily void Min\+Max\+Med (\begin{DoxyParamCaption}\item[{int}]{panel }\end{DoxyParamCaption})}
+
+Calculul Min, Max, Medie, Dispersie, Mediana.
+
+Minim si Maxim.
+
+Medie si Dispersie.
+
+Mediana.
+
+Definition at line 54 of file Proiect.\+c.
+
+\mbox{\Hypertarget{_proiect_8c_a2e7302310f7b0eff4315ee418505f3c2}\label{_proiect_8c_a2e7302310f7b0eff4315ee418505f3c2}} 
+\index{Proiect.c@{Proiect.c}!NextCB@{NextCB}}
+\index{NextCB@{NextCB}!Proiect.c@{Proiect.c}}
+\doxysubsubsection{\texorpdfstring{NextCB()}{NextCB()}}
+{\footnotesize\ttfamily int C\+V\+I\+C\+A\+L\+L\+B\+A\+CK Next\+CB (\begin{DoxyParamCaption}\item[{int}]{panel,  }\item[{int}]{control,  }\item[{int}]{event,  }\item[{void $\ast$}]{callback\+Data,  }\item[{int}]{event\+Data1,  }\item[{int}]{event\+Data2 }\end{DoxyParamCaption})}
+
+Verificare si actualizare pagina actuala.
+
+Stergerea vechilor grafice.
+
+Reafisarea noilor grafice.
+
+Afisarea noilor Min, Max, Medie, Dispersie, Mediana.
+
+Definition at line 228 of file Proiect.\+c.
+
+\mbox{\Hypertarget{_proiect_8c_ad10bcf5d390af1e31d784cf6caca0b0e}\label{_proiect_8c_ad10bcf5d390af1e31d784cf6caca0b0e}} 
+\index{Proiect.c@{Proiect.c}!OnLoadButtonCB@{OnLoadButtonCB}}
+\index{OnLoadButtonCB@{OnLoadButtonCB}!Proiect.c@{Proiect.c}}
+\doxysubsubsection{\texorpdfstring{OnLoadButtonCB()}{OnLoadButtonCB()}}
+{\footnotesize\ttfamily int C\+V\+I\+C\+A\+L\+L\+B\+A\+CK On\+Load\+Button\+CB (\begin{DoxyParamCaption}\item[{int}]{panel,  }\item[{int}]{control,  }\item[{int}]{event,  }\item[{void $\ast$}]{callback\+Data,  }\item[{int}]{event\+Data1,  }\item[{int}]{event\+Data2 }\end{DoxyParamCaption})}
+
+Executa script python pentru conversia unui fisierului .wav in .txt
+
+Astept sa fie generate cele doua fisiere (modificati timpul daca este necesar
+
+Incarc informatiile privind rata de esantionare si numarul de valori
+
+Alocare memorie pentru numarul de puncte
+
+Incarcare din fisierul .txt in memorie (vector)
+
+Afisare pe grapf
+
+Afisare Min, Max, Medie, Dispersie, Mediana.
+
+Definition at line 118 of file Proiect.\+c.
+
+\mbox{\Hypertarget{_proiect_8c_a6d979a129d23db07fb3efbe73be7969c}\label{_proiect_8c_a6d979a129d23db07fb3efbe73be7969c}} 
+\index{Proiect.c@{Proiect.c}!panelCB@{panelCB}}
+\index{panelCB@{panelCB}!Proiect.c@{Proiect.c}}
+\doxysubsubsection{\texorpdfstring{panelCB()}{panelCB()}}
+{\footnotesize\ttfamily int C\+V\+I\+C\+A\+L\+L\+B\+A\+CK panel\+CB (\begin{DoxyParamCaption}\item[{int}]{panel,  }\item[{int}]{event,  }\item[{void $\ast$}]{callback\+Data,  }\item[{int}]{event\+Data1,  }\item[{int}]{event\+Data2 }\end{DoxyParamCaption})}
+
+
+
+H\+I\+FN Exit when the user dismisses the panel. 
+
+
+
+Definition at line 99 of file Proiect.\+c.
+
+\mbox{\Hypertarget{_proiect_8c_a4714c06c150df8bb80a1957ea34156af}\label{_proiect_8c_a4714c06c150df8bb80a1957ea34156af}} 
+\index{Proiect.c@{Proiect.c}!PrevCB@{PrevCB}}
+\index{PrevCB@{PrevCB}!Proiect.c@{Proiect.c}}
+\doxysubsubsection{\texorpdfstring{PrevCB()}{PrevCB()}}
+{\footnotesize\ttfamily int C\+V\+I\+C\+A\+L\+L\+B\+A\+CK Prev\+CB (\begin{DoxyParamCaption}\item[{int}]{panel,  }\item[{int}]{control,  }\item[{int}]{event,  }\item[{void $\ast$}]{callback\+Data,  }\item[{int}]{event\+Data1,  }\item[{int}]{event\+Data2 }\end{DoxyParamCaption})}
+
+Verificare si actualizare pagina actuala.
+
+Stergerea vechilor grafice.
+
+Reafisarea noilor grafice.
+
+Afisarea noilor Min, Max, Medie, Dispersie, Mediana.
+
+Definition at line 198 of file Proiect.\+c.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{_proiect_8c_a20f4c4490bc8ecbdd1ffcb79acce6035}\label{_proiect_8c_a20f4c4490bc8ecbdd1ffcb79acce6035}} 
+\index{Proiect.c@{Proiect.c}!alpha@{alpha}}
+\index{alpha@{alpha}!Proiect.c@{Proiect.c}}
+\doxysubsubsection{\texorpdfstring{alpha}{alpha}}
+{\footnotesize\ttfamily double alpha}
+
+
+
+Definition at line 33 of file Proiect.\+c.
+
+\mbox{\Hypertarget{_proiect_8c_ad43c3812e6d13e0518d9f8b8f463ffcf}\label{_proiect_8c_ad43c3812e6d13e0518d9f8b8f463ffcf}} 
+\index{Proiect.c@{Proiect.c}!count@{count}}
+\index{count@{count}!Proiect.c@{Proiect.c}}
+\doxysubsubsection{\texorpdfstring{count}{count}}
+{\footnotesize\ttfamily int count =0}
+
+
+
+Definition at line 35 of file Proiect.\+c.
+
+\mbox{\Hypertarget{_proiect_8c_ac9abe8bc6dc21fe829fc7f637b7719bd}\label{_proiect_8c_ac9abe8bc6dc21fe829fc7f637b7719bd}} 
+\index{Proiect.c@{Proiect.c}!filtered@{filtered}}
+\index{filtered@{filtered}!Proiect.c@{Proiect.c}}
+\doxysubsubsection{\texorpdfstring{filtered}{filtered}}
+{\footnotesize\ttfamily int filtered =0}
+
+
+
+Definition at line 35 of file Proiect.\+c.
+
+\mbox{\Hypertarget{_proiect_8c_a0b0ede69e8156eb97acc579b88e883de}\label{_proiect_8c_a0b0ede69e8156eb97acc579b88e883de}} 
+\index{Proiect.c@{Proiect.c}!max@{max}}
+\index{max@{max}!Proiect.c@{Proiect.c}}
+\doxysubsubsection{\texorpdfstring{max}{max}}
+{\footnotesize\ttfamily double max}
+
+
+
+Definition at line 32 of file Proiect.\+c.
+
+\mbox{\Hypertarget{_proiect_8c_a5875453a3de38cab915ed96031184e11}\label{_proiect_8c_a5875453a3de38cab915ed96031184e11}} 
+\index{Proiect.c@{Proiect.c}!median@{median}}
+\index{median@{median}!Proiect.c@{Proiect.c}}
+\doxysubsubsection{\texorpdfstring{median}{median}}
+{\footnotesize\ttfamily double median}
+
+
+
+Definition at line 32 of file Proiect.\+c.
+
+\mbox{\Hypertarget{_proiect_8c_aad36546e8175d2922bee165fe028fedc}\label{_proiect_8c_aad36546e8175d2922bee165fe028fedc}} 
+\index{Proiect.c@{Proiect.c}!min@{min}}
+\index{min@{min}!Proiect.c@{Proiect.c}}
+\doxysubsubsection{\texorpdfstring{min}{min}}
+{\footnotesize\ttfamily double min}
+
+
+
+Definition at line 32 of file Proiect.\+c.
+
+\mbox{\Hypertarget{_proiect_8c_a515ec0fe2abce5449e37ae520974cf5f}\label{_proiect_8c_a515ec0fe2abce5449e37ae520974cf5f}} 
+\index{Proiect.c@{Proiect.c}!npoints@{npoints}}
+\index{npoints@{npoints}!Proiect.c@{Proiect.c}}
+\doxysubsubsection{\texorpdfstring{npoints}{npoints}}
+{\footnotesize\ttfamily int npoints = 0}
+
+
+
+Definition at line 47 of file Proiect.\+c.
+
+\mbox{\Hypertarget{_proiect_8c_a8055542f0409de69de9969edbb0a23c5}\label{_proiect_8c_a8055542f0409de69de9969edbb0a23c5}} 
+\index{Proiect.c@{Proiect.c}!panelHandle@{panelHandle}}
+\index{panelHandle@{panelHandle}!Proiect.c@{Proiect.c}}
+\doxysubsubsection{\texorpdfstring{panelHandle}{panelHandle}}
+{\footnotesize\ttfamily int panel\+Handle = 0}
+
+
+
+Definition at line 31 of file Proiect.\+c.
+
+\mbox{\Hypertarget{_proiect_8c_a2bd79d2ab2dfb6aeaf75c2878ad30e1f}\label{_proiect_8c_a2bd79d2ab2dfb6aeaf75c2878ad30e1f}} 
+\index{Proiect.c@{Proiect.c}!sampleRate@{sampleRate}}
+\index{sampleRate@{sampleRate}!Proiect.c@{Proiect.c}}
+\doxysubsubsection{\texorpdfstring{sampleRate}{sampleRate}}
+{\footnotesize\ttfamily double sample\+Rate = 0.\+0}
+
+
+
+Definition at line 46 of file Proiect.\+c.
+
+\mbox{\Hypertarget{_proiect_8c_a2943e5895f5488ed44ed4a86e59dcf1b}\label{_proiect_8c_a2943e5895f5488ed44ed4a86e59dcf1b}} 
+\index{Proiect.c@{Proiect.c}!sum@{sum}}
+\index{sum@{sum}!Proiect.c@{Proiect.c}}
+\doxysubsubsection{\texorpdfstring{sum}{sum}}
+{\footnotesize\ttfamily double sum}
+
+
+
+Definition at line 32 of file Proiect.\+c.
+
+\mbox{\Hypertarget{_proiect_8c_a3ba67a2eb02a342ef9692afc721f2fbc}\label{_proiect_8c_a3ba67a2eb02a342ef9692afc721f2fbc}} 
+\index{Proiect.c@{Proiect.c}!waveData@{waveData}}
+\index{waveData@{waveData}!Proiect.c@{Proiect.c}}
+\doxysubsubsection{\texorpdfstring{waveData}{waveData}}
+{\footnotesize\ttfamily double$\ast$ wave\+Data = 0}
+
+
+
+Definition at line 48 of file Proiect.\+c.
+
+\mbox{\Hypertarget{_proiect_8c_a948ae0d6c5a994b59c0eed7a40095b0c}\label{_proiect_8c_a948ae0d6c5a994b59c0eed7a40095b0c}} 
+\index{Proiect.c@{Proiect.c}!waveFiltered@{waveFiltered}}
+\index{waveFiltered@{waveFiltered}!Proiect.c@{Proiect.c}}
+\doxysubsubsection{\texorpdfstring{waveFiltered}{waveFiltered}}
+{\footnotesize\ttfamily double$\ast$ wave\+Filtered = 0}
+
+
+
+Definition at line 49 of file Proiect.\+c.
+
+\mbox{\Hypertarget{_proiect_8c_a4bfbfbccbbd8c8eb48eba57725c7413b}\label{_proiect_8c_a4bfbfbccbbd8c8eb48eba57725c7413b}} 
+\index{Proiect.c@{Proiect.c}!waveInfo@{waveInfo}}
+\index{waveInfo@{waveInfo}!Proiect.c@{Proiect.c}}
+\doxysubsubsection{\texorpdfstring{waveInfo}{waveInfo}}
+{\footnotesize\ttfamily int wave\+Info\mbox{[}2\mbox{]}}
+
+
+
+Definition at line 44 of file Proiect.\+c.
+

@@ -1,0 +1,26 @@
+var _proiect_8h =
+[
+    [ "PANEL", "_proiect_8h.html#a558c51e4f5ec11d7d66ccc3fa5bb64e9", null ],
+    [ "PANEL_ALPHA", "_proiect_8h.html#aaf7a4620143cb02bbd7ecf7ad1889c88", null ],
+    [ "PANEL_Aplica_Button", "_proiect_8h.html#a35708a85c00a9e9af8819fb605621522", null ],
+    [ "PANEL_DISPERSIA", "_proiect_8h.html#ad06fdad68ffa15a73a13b05737e9f259", null ],
+    [ "PANEL_FILTERED_DATA_GRAPH", "_proiect_8h.html#a84661aef80d29844b18b040f235e4c15", null ],
+    [ "PANEL_Filtru", "_proiect_8h.html#a4e32427e8f9e789ae5acc15e38b7f69a", null ],
+    [ "PANEL_Interval", "_proiect_8h.html#a77dfc712b571ef0f682d7f0417f0f72f", null ],
+    [ "PANEL_LoadButton", "_proiect_8h.html#a6c5e8cea1e735d6496084655861b4d0f", null ],
+    [ "PANEL_MAX", "_proiect_8h.html#a5f1e708d04dc47f8374a417c3c51737b", null ],
+    [ "PANEL_MEDIANA", "_proiect_8h.html#a02731934225c8e18eb07fb8d2883dd64", null ],
+    [ "PANEL_MEDIE", "_proiect_8h.html#adf3da7553781131e3adefffbaa3b99c8", null ],
+    [ "PANEL_MIN", "_proiect_8h.html#ae0549e28f9b2dec94d59275c37136449", null ],
+    [ "PANEL_Next_Button", "_proiect_8h.html#a5b4fc93fdea9d8d02cae743dda4ef00d", null ],
+    [ "PANEL_Prev_Button", "_proiect_8h.html#a7d94678fec55081c6b06729ec3b7cd9c", null ],
+    [ "PANEL_RAW_DATA_GRAPH", "_proiect_8h.html#ae169cc6c72340124ff57b53b7e80cee2", null ],
+    [ "PANEL_Start", "_proiect_8h.html#aba6db47976382650343bb33864f8b644", null ],
+    [ "PANEL_Stop", "_proiect_8h.html#aace53a195e4f051444fffc4c659754d3", null ],
+    [ "PANEL_TEXTMSG", "_proiect_8h.html#ae417995026aabb3b5d3c40763b2d88c1", null ],
+    [ "ApplyCB", "_proiect_8h.html#a829885ce47e0197033489ac70a9156eb", null ],
+    [ "NextCB", "_proiect_8h.html#a2e7302310f7b0eff4315ee418505f3c2", null ],
+    [ "OnLoadButtonCB", "_proiect_8h.html#ad10bcf5d390af1e31d784cf6caca0b0e", null ],
+    [ "panelCB", "_proiect_8h.html#a6d979a129d23db07fb3efbe73be7969c", null ],
+    [ "PrevCB", "_proiect_8h.html#a4714c06c150df8bb80a1957ea34156af", null ]
+];

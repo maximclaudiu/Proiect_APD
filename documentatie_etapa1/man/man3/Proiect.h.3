@@ -1,0 +1,222 @@
+.TH "Proiect.h" 3 "Sat Nov 14 2020" "Version Version 1.1" "Proiect_APD_Etapa1" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Proiect.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <userint\&.h>\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBPANEL\fP   1       /* callback function: \fBpanelCB\fP */"
+.br
+.ti -1c
+.RI "#define \fBPANEL_LoadButton\fP   2       /* control type: command, callback function: \fBOnLoadButtonCB\fP */"
+.br
+.ti -1c
+.RI "#define \fBPANEL_Prev_Button\fP   3       /* control type: command, callback function: \fBPrevCB\fP */"
+.br
+.ti -1c
+.RI "#define \fBPANEL_Next_Button\fP   4       /* control type: command, callback function: \fBNextCB\fP */"
+.br
+.ti -1c
+.RI "#define \fBPANEL_Stop\fP   5       /* control type: numeric, callback function: (none) */"
+.br
+.ti -1c
+.RI "#define \fBPANEL_Start\fP   6       /* control type: numeric, callback function: (none) */"
+.br
+.ti -1c
+.RI "#define \fBPANEL_Interval\fP   7       /* control type: textMsg, callback function: (none) */"
+.br
+.ti -1c
+.RI "#define \fBPANEL_DISPERSIA\fP   8       /* control type: numeric, callback function: (none) */"
+.br
+.ti -1c
+.RI "#define \fBPANEL_MEDIANA\fP   9       /* control type: numeric, callback function: (none) */"
+.br
+.ti -1c
+.RI "#define \fBPANEL_MEDIE\fP   10      /* control type: numeric, callback function: (none) */"
+.br
+.ti -1c
+.RI "#define \fBPANEL_MAX\fP   11      /* control type: numeric, callback function: (none) */"
+.br
+.ti -1c
+.RI "#define \fBPANEL_MIN\fP   12      /* control type: numeric, callback function: (none) */"
+.br
+.ti -1c
+.RI "#define \fBPANEL_FILTERED_DATA_GRAPH\fP   13      /* control type: graph, callback function: (none) */"
+.br
+.ti -1c
+.RI "#define \fBPANEL_RAW_DATA_GRAPH\fP   14      /* control type: graph, callback function: (none) */"
+.br
+.ti -1c
+.RI "#define \fBPANEL_Filtru\fP   15      /* control type: ring, callback function: (none) */"
+.br
+.ti -1c
+.RI "#define \fBPANEL_ALPHA\fP   16      /* control type: numeric, callback function: (none) */"
+.br
+.ti -1c
+.RI "#define \fBPANEL_Aplica_Button\fP   17      /* control type: command, callback function: \fBApplyCB\fP */"
+.br
+.ti -1c
+.RI "#define \fBPANEL_TEXTMSG\fP   18      /* control type: textMsg, callback function: (none) */"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int CVICALLBACK \fBApplyCB\fP (int panel, int control, int event, void *callbackData, int eventData1, int eventData2)"
+.br
+.ti -1c
+.RI "int CVICALLBACK \fBNextCB\fP (int panel, int control, int event, void *callbackData, int eventData1, int eventData2)"
+.br
+.ti -1c
+.RI "int CVICALLBACK \fBOnLoadButtonCB\fP (int panel, int control, int event, void *callbackData, int eventData1, int eventData2)"
+.br
+.ti -1c
+.RI "int CVICALLBACK \fBpanelCB\fP (int panel, int event, void *callbackData, int eventData1, int eventData2)"
+.br
+.RI "HIFN Exit when the user dismisses the panel\&. "
+.ti -1c
+.RI "int CVICALLBACK \fBPrevCB\fP (int panel, int control, int event, void *callbackData, int eventData1, int eventData2)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define PANEL   1       /* callback function: \fBpanelCB\fP */"
+
+.PP
+Definition at line 16 of file Proiect\&.h\&.
+.SS "#define PANEL_ALPHA   16      /* control type: numeric, callback function: (none) */"
+
+.PP
+Definition at line 31 of file Proiect\&.h\&.
+.SS "#define PANEL_Aplica_Button   17      /* control type: command, callback function: \fBApplyCB\fP */"
+
+.PP
+Definition at line 32 of file Proiect\&.h\&.
+.SS "#define PANEL_DISPERSIA   8       /* control type: numeric, callback function: (none) */"
+
+.PP
+Definition at line 23 of file Proiect\&.h\&.
+.SS "#define PANEL_FILTERED_DATA_GRAPH   13      /* control type: graph, callback function: (none) */"
+
+.PP
+Definition at line 28 of file Proiect\&.h\&.
+.SS "#define PANEL_Filtru   15      /* control type: ring, callback function: (none) */"
+
+.PP
+Definition at line 30 of file Proiect\&.h\&.
+.SS "#define PANEL_Interval   7       /* control type: textMsg, callback function: (none) */"
+
+.PP
+Definition at line 22 of file Proiect\&.h\&.
+.SS "#define PANEL_LoadButton   2       /* control type: command, callback function: \fBOnLoadButtonCB\fP */"
+
+.PP
+Definition at line 17 of file Proiect\&.h\&.
+.SS "#define PANEL_MAX   11      /* control type: numeric, callback function: (none) */"
+
+.PP
+Definition at line 26 of file Proiect\&.h\&.
+.SS "#define PANEL_MEDIANA   9       /* control type: numeric, callback function: (none) */"
+
+.PP
+Definition at line 24 of file Proiect\&.h\&.
+.SS "#define PANEL_MEDIE   10      /* control type: numeric, callback function: (none) */"
+
+.PP
+Definition at line 25 of file Proiect\&.h\&.
+.SS "#define PANEL_MIN   12      /* control type: numeric, callback function: (none) */"
+
+.PP
+Definition at line 27 of file Proiect\&.h\&.
+.SS "#define PANEL_Next_Button   4       /* control type: command, callback function: \fBNextCB\fP */"
+
+.PP
+Definition at line 19 of file Proiect\&.h\&.
+.SS "#define PANEL_Prev_Button   3       /* control type: command, callback function: \fBPrevCB\fP */"
+
+.PP
+Definition at line 18 of file Proiect\&.h\&.
+.SS "#define PANEL_RAW_DATA_GRAPH   14      /* control type: graph, callback function: (none) */"
+
+.PP
+Definition at line 29 of file Proiect\&.h\&.
+.SS "#define PANEL_Start   6       /* control type: numeric, callback function: (none) */"
+
+.PP
+Definition at line 21 of file Proiect\&.h\&.
+.SS "#define PANEL_Stop   5       /* control type: numeric, callback function: (none) */"
+
+.PP
+Definition at line 20 of file Proiect\&.h\&.
+.SS "#define PANEL_TEXTMSG   18      /* control type: textMsg, callback function: (none) */"
+
+.PP
+Definition at line 33 of file Proiect\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "int CVICALLBACK ApplyCB (int panel, int control, int event, void * callbackData, int eventData1, int eventData2)"
+Stergerea graficului vechi\&.
+.PP
+Alegerea optiunii de filtrare\&.
+.PP
+Filtrele de mediere pe 16 si 32\&.
+.PP
+Filtrul de ordin I\&.
+.PP
+Reafisarea noilor grafice\&.
+.PP
+Definition at line 156 of file Proiect\&.c\&.
+.SS "int CVICALLBACK NextCB (int panel, int control, int event, void * callbackData, int eventData1, int eventData2)"
+Verificare si actualizare pagina actuala\&.
+.PP
+Stergerea vechilor grafice\&.
+.PP
+Reafisarea noilor grafice\&.
+.PP
+Afisarea noilor Min, Max, Medie, Dispersie, Mediana\&.
+.PP
+Definition at line 228 of file Proiect\&.c\&.
+.SS "int CVICALLBACK OnLoadButtonCB (int panel, int control, int event, void * callbackData, int eventData1, int eventData2)"
+Executa script python pentru conversia unui fisierului \&.wav in \&.txt
+.PP
+Astept sa fie generate cele doua fisiere (modificati timpul daca este necesar
+.PP
+Incarc informatiile privind rata de esantionare si numarul de valori
+.PP
+Alocare memorie pentru numarul de puncte
+.PP
+Incarcare din fisierul \&.txt in memorie (vector)
+.PP
+Afisare pe grapf
+.PP
+Afisare Min, Max, Medie, Dispersie, Mediana\&.
+.PP
+Definition at line 118 of file Proiect\&.c\&.
+.SS "int CVICALLBACK panelCB (int panel, int event, void * callbackData, int eventData1, int eventData2)"
+
+.PP
+HIFN Exit when the user dismisses the panel\&. 
+.PP
+Definition at line 99 of file Proiect\&.c\&.
+.SS "int CVICALLBACK PrevCB (int panel, int control, int event, void * callbackData, int eventData1, int eventData2)"
+Verificare si actualizare pagina actuala\&.
+.PP
+Stergerea vechilor grafice\&.
+.PP
+Reafisarea noilor grafice\&.
+.PP
+Afisarea noilor Min, Max, Medie, Dispersie, Mediana\&.
+.PP
+Definition at line 198 of file Proiect\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Proiect_APD_Etapa1 from the source code\&.
