@@ -13,24 +13,40 @@
 
      /* Panels and Controls: */
 
-#define  PANEL                            1       /* callback function: panelCB */
-#define  PANEL_LoadButton                 2       /* control type: command, callback function: OnLoadButtonCB */
-#define  PANEL_Prev_Button                3       /* control type: command, callback function: PrevCB */
-#define  PANEL_Next_Button                4       /* control type: command, callback function: NextCB */
-#define  PANEL_Stop                       5       /* control type: numeric, callback function: (none) */
-#define  PANEL_Start                      6       /* control type: numeric, callback function: (none) */
-#define  PANEL_Interval                   7       /* control type: textMsg, callback function: (none) */
-#define  PANEL_DISPERSIA                  8       /* control type: numeric, callback function: (none) */
-#define  PANEL_MEDIANA                    9       /* control type: numeric, callback function: (none) */
-#define  PANEL_MEDIE                      10      /* control type: numeric, callback function: (none) */
-#define  PANEL_MAX                        11      /* control type: numeric, callback function: (none) */
-#define  PANEL_MIN                        12      /* control type: numeric, callback function: (none) */
-#define  PANEL_FILTERED_DATA_GRAPH        13      /* control type: graph, callback function: (none) */
-#define  PANEL_RAW_DATA_GRAPH             14      /* control type: graph, callback function: (none) */
-#define  PANEL_Filtru                     15      /* control type: ring, callback function: (none) */
-#define  PANEL_ALPHA                      16      /* control type: numeric, callback function: (none) */
-#define  PANEL_Aplica_Button              17      /* control type: command, callback function: ApplyCB */
-#define  PANEL_TEXTMSG                    18      /* control type: textMsg, callback function: (none) */
+#define  AcqPanel                         1       /* callback function: panelCB */
+#define  AcqPanel_Switch_Tabs             2       /* control type: binary, callback function: OnSwitchCB */
+#define  AcqPanel_LoadButton              3       /* control type: command, callback function: OnLoadButtonAcqCB */
+#define  AcqPanel_Prev_Button             4       /* control type: command, callback function: PrevCB */
+#define  AcqPanel_Next_Button             5       /* control type: command, callback function: NextCB */
+#define  AcqPanel_Stop                    6       /* control type: numeric, callback function: (none) */
+#define  AcqPanel_Start                   7       /* control type: numeric, callback function: (none) */
+#define  AcqPanel_Interval                8       /* control type: textMsg, callback function: (none) */
+#define  AcqPanel_DISPERSIA               9       /* control type: numeric, callback function: (none) */
+#define  AcqPanel_MEDIANA                 10      /* control type: numeric, callback function: (none) */
+#define  AcqPanel_MEDIE                   11      /* control type: numeric, callback function: (none) */
+#define  AcqPanel_MAX                     12      /* control type: numeric, callback function: (none) */
+#define  AcqPanel_MIN                     13      /* control type: numeric, callback function: (none) */
+#define  AcqPanel_FILTERED_DATA_GRAPH     14      /* control type: graph, callback function: (none) */
+#define  AcqPanel_RAW_DATA_GRAPH          15      /* control type: graph, callback function: (none) */
+#define  AcqPanel_Filtru                  16      /* control type: ring, callback function: (none) */
+#define  AcqPanel_ALPHA                   17      /* control type: numeric, callback function: (none) */
+#define  AcqPanel_Aplica_Button           18      /* control type: command, callback function: ApplyCB */
+
+#define  WavePanel                        2       /* callback function: panelCB */
+#define  WavePanel_Switch_tabs            2       /* control type: binary, callback function: OnSwitchCB */
+#define  WavePanel_Freq_Graph_Filter      3       /* control type: graph, callback function: (none) */
+#define  WavePanel_Prev_Button            4       /* control type: command, callback function: PrevCB */
+#define  WavePanel_Next_Button            5       /* control type: command, callback function: NextCB */
+#define  WavePanel_Stop                   6       /* control type: numeric, callback function: (none) */
+#define  WavePanel_Start                  7       /* control type: numeric, callback function: (none) */
+#define  WavePanel_Interval               8       /* control type: textMsg, callback function: (none) */
+#define  WavePanel_Specter_Graph_filter   9       /* control type: graph, callback function: (none) */
+#define  WavePanel_Specter_Graph          10      /* control type: graph, callback function: (none) */
+#define  WavePanel_Freq_Graph             11      /* control type: graph, callback function: (none) */
+#define  WavePanel_NPoints                12      /* control type: numeric, callback function: (none) */
+#define  WavePanel_ALPHA                  13      /* control type: numeric, callback function: (none) */
+#define  WavePanel_Aplica_Button          14      /* control type: command, callback function: ApplyCB */
+#define  WavePanel_Filtru_freq            15      /* control type: ring, callback function: (none) */
 
 
      /* Control Arrays: */
@@ -47,7 +63,8 @@
 
 int  CVICALLBACK ApplyCB(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK NextCB(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
-int  CVICALLBACK OnLoadButtonCB(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK OnLoadButtonAcqCB(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK OnSwitchCB(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK panelCB(int panel, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK PrevCB(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 

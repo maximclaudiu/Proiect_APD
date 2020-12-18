@@ -28,14 +28,13 @@
 //==============================================================================
 // Static global variables
 
-int panelHandle = 0;
+int acqPanel = 0;
+int wavePanel=0;
 double min, max, sum, median;
 double alpha;
 static int minInd, maxInd;
 int count=0, filtered=0;
-
-
-
+int opt;
 //==============================================================================
 // Static functions
 
@@ -45,29 +44,38 @@ int waveInfo[2]; //waveInfo[0] = sampleRate
 				 //waveInfo[1] = number of elements
 double sampleRate = 0.0;
 int npoints = 0;
-double *waveData = 0;
-double *waveFiltered = 0;
 
+double *waveData = 0;
+double *specterData=0;
+double *waveFiltered = 0;
+double *freqFiltered=0;
+double *specterFiltered =0;
+
+double df=0;
+double searchFreq=0, df1=0;
+double *autoSpectrum=NULL, freqPeak=0, powerPeak=0, *convertedSpectrum=NULL;
+
+WindowConst winConst;
 //==============================================================================
 // Global functions
 
 void MinMaxMed (int panel) {
-			/// Calculul Min, Max, Medie, Dispersie, Mediana.
-			
-			/// Minim si Maxim.
-			MaxMin1D (waveData+count*(int)sampleRate, sampleRate, &max, &maxInd, &min, &minInd);
-			SetCtrlVal(panel, PANEL_MAX, max);
-			SetCtrlVal(panel, PANEL_MIN, min);
-			/// Medie si Dispersie.
-			Sum1D (waveData+count*(int)sampleRate, sampleRate, &sum);
-			double dispersie = pow(sum, 2)/npoints;
-			double medie=sum/npoints;
-			SetCtrlVal(panel, PANEL_MEDIE, medie);
-			dispersie = dispersie - pow(medie, 2);
-			SetCtrlVal (panel, PANEL_DISPERSIA, dispersie);
-			/// Mediana.
-			Median(waveData+count*(int)sampleRate, sampleRate, &median);
-			SetCtrlVal(panel, PANEL_MEDIANA, median);
+	/// Calculul Min, Max, Medie, Dispersie, Mediana.
+	
+	/// Minim si Maxim.
+	MaxMin1D (waveData+count*(int)sampleRate, sampleRate, &max, &maxInd, &min, &minInd);
+	SetCtrlVal(panel, AcqPanel_MAX, max);
+	SetCtrlVal(panel, AcqPanel_MIN, min);
+	/// Medie si Dispersie.
+	Sum1D (waveData+count*(int)sampleRate, sampleRate, &sum);
+	double dispersie = pow(sum, 2)/npoints;
+	double medie=sum/npoints;
+	SetCtrlVal(panel, AcqPanel_MEDIE, medie);
+	dispersie = dispersie - pow(medie, 2);
+	SetCtrlVal (panel, AcqPanel_DISPERSIA, dispersie);
+	/// Mediana.
+	Median(waveData+count*(int)sampleRate, sampleRate, &median);
+	SetCtrlVal(panel, AcqPanel_MEDIANA, median);
 }
 
 //==============================================================================
@@ -79,16 +87,16 @@ int main (int argc, char *argv[])
 	
 	/// initialize and load resources 
 	nullChk (InitCVIRTE (0, argv, 0));
-	errChk (panelHandle = LoadPanel (0, "Proiect.uir", PANEL));
-	
+	errChk (acqPanel = LoadPanel (0, "Proiect.uir", AcqPanel));
+	errChk (wavePanel = LoadPanel (0, "Proiect.uir", WavePanel));
 	/// display the panel and run the user interface 
-	errChk (DisplayPanel (panelHandle));
+	errChk (DisplayPanel (acqPanel));
 	errChk (RunUserInterface ());
 
 Error:
 	/// clean up 
-	if (panelHandle > 0)
-		DiscardPanel (panelHandle);
+	if (acqPanel > 0)
+		DiscardPanel (acqPanel);
 	return 0;
 }
 
@@ -115,12 +123,55 @@ int CVICALLBACK panelCB (int panel, int event, void *callbackData,
 
 //==============================================================================
 
-int CVICALLBACK OnLoadButtonCB (int panel, int control, int event,
+void FrequencyFilter (int mainPanel, double *waveData, int npoints)
+{
+	char unit[32]="V";
+	ScaledWindowEx(waveData,npoints,RECTANGLE_, 0, &winConst);
+	if (autoSpectrum != NULL) 
+		free(autoSpectrum);
+	autoSpectrum = (double *) calloc(npoints, sizeof(double));
+	if (convertedSpectrum != NULL)
+		free(convertedSpectrum);
+	convertedSpectrum = (double *) calloc(npoints, sizeof(double));
+	AutoPowerSpectrum (waveData, npoints, 1, autoSpectrum, &df);
+	PowerFrequencyEstimate( autoSpectrum, npoints, searchFreq, winConst, df, 100, &freqPeak, &powerPeak);
+	SpectrumUnitConversion(autoSpectrum,npoints, 0, SCALING_MODE_LINEAR, DISPLAY_UNIT_VRMS, df, winConst, convertedSpectrum, unit);
+	PlotWaveform( mainPanel, WavePanel_Specter_Graph, convertedSpectrum, npoints/4 ,VAL_DOUBLE, 1.0, 0.0, 0.0, 1, VAL_THIN_LINE, VAL_EMPTY_SQUARE, VAL_SOLID,  VAL_CONNECTED_POINTS, VAL_DK_GREEN);
+}
+
+//==============================================================================
+
+void updateWavePanel() {
+	DeleteGraphPlot(wavePanel, WavePanel_Freq_Graph, -1, VAL_IMMEDIATE_DRAW);
+	DeleteGraphPlot(wavePanel, WavePanel_Freq_Graph_Filter, -1, VAL_IMMEDIATE_DRAW);
+	if (filtered)
+	{
+		DeleteGraphPlot(wavePanel, WavePanel_Specter_Graph, -1, VAL_IMMEDIATE_DRAW);
+	//	DeleteGraphPlot(wavePanel, WavePanel_Specter_Graph_filter, -1, VAL_IMMEDIATE_DRAW);
+	}
+	FrequencyFilter(wavePanel,waveData,npoints);
+	PlotY(wavePanel, WavePanel_Freq_Graph, waveData+count*(int)sampleRate, sampleRate,VAL_DOUBLE, VAL_THIN_LINE, VAL_EMPTY_SQUARE, VAL_SOLID, VAL_CONNECTED_POINTS, VAL_RED);
+	if (filtered)
+		PlotY(wavePanel, WavePanel_Freq_Graph_Filter, freqFiltered+count*(int)sampleRate, sampleRate,VAL_DOUBLE, VAL_THIN_LINE, VAL_EMPTY_SQUARE, VAL_SOLID, VAL_CONNECTED_POINTS, VAL_RED);
+}
+
+//==============================================================================
+
+void updateAcqPanel (){
+	DeleteGraphPlot(acqPanel, AcqPanel_RAW_DATA_GRAPH, -1, VAL_IMMEDIATE_DRAW);
+	if (filtered)
+		DeleteGraphPlot(acqPanel, AcqPanel_FILTERED_DATA_GRAPH, -1, VAL_IMMEDIATE_DRAW);
+	PlotY(acqPanel, AcqPanel_RAW_DATA_GRAPH, waveData+count*(int)sampleRate, sampleRate,VAL_DOUBLE, VAL_THIN_LINE, VAL_EMPTY_SQUARE, VAL_SOLID, VAL_CONNECTED_POINTS, VAL_RED);
+	if (filtered)
+		PlotY(acqPanel, AcqPanel_FILTERED_DATA_GRAPH, waveFiltered+count*(int)sampleRate, sampleRate,VAL_DOUBLE, VAL_THIN_LINE, VAL_EMPTY_SQUARE, VAL_SOLID, VAL_CONNECTED_POINTS, VAL_RED);
+}
+
+//==============================================================================
+
+int CVICALLBACK OnLoadButtonAcqCB (int panel, int control, int event,
 								void *callbackData, int eventData1, int eventData2)
 {
-	
-	switch (event)
-	{
+	switch (event) {
 		case EVENT_COMMIT:
 			/// Executa script python pentru conversia unui fisierului .wav in .txt
 			LaunchExecutable("python main.py");
@@ -140,11 +191,11 @@ int CVICALLBACK OnLoadButtonCB (int panel, int control, int event,
 			FileToArray("waveData.txt", waveData, VAL_DOUBLE, npoints, 1, VAL_GROUPS_TOGETHER, VAL_GROUPS_AS_COLUMNS, VAL_ASCII);
 			
 			/// Afisare pe grapf
-			PlotY(panel, PANEL_RAW_DATA_GRAPH, waveData+count*(int)sampleRate, sampleRate,VAL_DOUBLE, VAL_THIN_LINE, VAL_EMPTY_SQUARE, VAL_SOLID, VAL_CONNECTED_POINTS, VAL_RED);
-			if (filtered)
-				PlotY(panel, PANEL_FILTERED_DATA_GRAPH, waveFiltered+count*(int)sampleRate, sampleRate,VAL_DOUBLE, VAL_THIN_LINE, VAL_EMPTY_SQUARE, VAL_SOLID, VAL_CONNECTED_POINTS, VAL_RED);
+		
+			updateAcqPanel();
+			updateWavePanel();
 			/// Afisare Min, Max, Medie, Dispersie, Mediana.
-			MinMaxMed (panel);
+			MinMaxMed (acqPanel);
 			
 			break;
 	}
@@ -156,21 +207,17 @@ int CVICALLBACK OnLoadButtonCB (int panel, int control, int event,
 int CVICALLBACK ApplyCB (int panel, int control, int event,
 						 void *callbackData, int eventData1, int eventData2)
 {
-	switch (event)
-	{
+	switch (event) {
 		case EVENT_COMMIT:
 			int choice;
 			filtered=1;
 			/// Stergerea graficului vechi.
-			DeleteGraphPlot(panel, PANEL_FILTERED_DATA_GRAPH, -1, VAL_IMMEDIATE_DRAW);
 			waveFiltered = (double *) calloc(npoints, sizeof(double));
-			GetCtrlVal(panel, PANEL_Filtru, &choice);
+			GetCtrlVal(acqPanel, AcqPanel_Filtru, &choice);
 			/// Alegerea optiunii de filtrare.
-			if (choice ==16 || choice ==32)
-			{	
+			if (choice ==16 || choice ==32)	{	
 				/// Filtrele de mediere pe 16 si 32.
-				for (int i=0;i<npoints-choice;i++)
-				{
+				for (int i=0;i<npoints-choice;i++) {
 					int sum2=0;
 					for (int j=i;j<i+choice;j++)
 						sum2=sum2+waveData[j];
@@ -178,16 +225,16 @@ int CVICALLBACK ApplyCB (int panel, int control, int event,
 					waveFiltered[i]=sum2;
 				}
 			}
-			else if (choice ==0){
+			else if (choice ==0) {
 				/// Filtrul de ordin I.
-				GetCtrlVal(panel, PANEL_ALPHA, &alpha);
+				GetCtrlVal(panel, AcqPanel_ALPHA, &alpha);
 	            for(int i = 1; i<npoints; i++)
 	                waveFiltered[i]=(1-alpha)*waveFiltered[i-1]+alpha*waveData[i];
 	      	}
 			/// Reafisarea noilor grafice.
-			PlotY(panel, PANEL_RAW_DATA_GRAPH, waveData+count*(int)sampleRate, sampleRate,VAL_DOUBLE, VAL_THIN_LINE, VAL_EMPTY_SQUARE, VAL_SOLID, VAL_CONNECTED_POINTS, VAL_RED);
-			if (filtered)
-				PlotY(panel, PANEL_FILTERED_DATA_GRAPH, waveFiltered+count*(int)sampleRate, sampleRate,VAL_DOUBLE, VAL_THIN_LINE, VAL_EMPTY_SQUARE, VAL_SOLID, VAL_CONNECTED_POINTS, VAL_RED);
+			if (panel==acqPanel)
+				updateAcqPanel();
+			else updateWavePanel();
 			break;
 	}
 	return 0;
@@ -198,26 +245,23 @@ int CVICALLBACK ApplyCB (int panel, int control, int event,
 int CVICALLBACK PrevCB (int panel, int control, int event,
 						void *callbackData, int eventData1, int eventData2)
 {
-	switch (event)
-	{
+	switch (event) {
 		case EVENT_COMMIT:
 				/// Verificare si actualizare pagina actuala.
-				GetCtrlVal (panel, PANEL_Start, &count);
-				if (count>=1)
-				{	
-					SetCtrlVal(panel, PANEL_Start, count-1 );
-					SetCtrlVal(panel, PANEL_Stop, count);
+				GetCtrlVal (panel, AcqPanel_Start, &count);
+				if (count>=1) {	
+					SetCtrlVal(acqPanel, AcqPanel_Start, count-1 );
+					SetCtrlVal(acqPanel, AcqPanel_Stop, count);
+					SetCtrlVal(wavePanel, WavePanel_Start, count-1 );
+					SetCtrlVal(wavePanel, WavePanel_Stop, count);
 					count=count-1;
 				}
 				/// Stergerea vechilor grafice.
-				DeleteGraphPlot(panel, PANEL_RAW_DATA_GRAPH, -1, VAL_IMMEDIATE_DRAW);
-				DeleteGraphPlot(panel, PANEL_FILTERED_DATA_GRAPH, -1, VAL_IMMEDIATE_DRAW);
-				/// Reafisarea noilor grafice.
-				PlotY(panel, PANEL_RAW_DATA_GRAPH, waveData+count*(int)sampleRate, sampleRate,VAL_DOUBLE, VAL_THIN_LINE, VAL_EMPTY_SQUARE, VAL_SOLID, VAL_CONNECTED_POINTS, VAL_RED);
-				if (filtered)
-					PlotY(panel, PANEL_FILTERED_DATA_GRAPH, waveFiltered+count*(int)sampleRate, sampleRate,VAL_DOUBLE, VAL_THIN_LINE, VAL_EMPTY_SQUARE, VAL_SOLID, VAL_CONNECTED_POINTS, VAL_RED);
+				if (panel==acqPanel)
+					updateAcqPanel();
+				else updateWavePanel();
 				/// Afisarea noilor Min, Max, Medie, Dispersie, Mediana. 
-				MinMaxMed (panel);
+				MinMaxMed (acqPanel);
 			break;
 	}
 	return 0;
@@ -228,25 +272,44 @@ int CVICALLBACK PrevCB (int panel, int control, int event,
 int CVICALLBACK NextCB (int panel, int control, int event,
 						void *callbackData, int eventData1, int eventData2)
 {
-	switch (event)
-	{
+	switch (event) {
 		case EVENT_COMMIT:
 				/// Verificare si actualizare pagina actuala.
-				GetCtrlVal(panel, PANEL_Stop, &count);
-				if (count<5)
-				{
-					SetCtrlVal(panel, PANEL_Start, count );
-					SetCtrlVal(panel, PANEL_Stop, count+1);
+				GetCtrlVal(panel, AcqPanel_Stop, &count);
+				if (count<5) {
+					SetCtrlVal(acqPanel, AcqPanel_Start, count );
+					SetCtrlVal(acqPanel, AcqPanel_Stop, count+1);
+					SetCtrlVal(wavePanel, WavePanel_Start, count );
+					SetCtrlVal(wavePanel, WavePanel_Stop, count+1);
 				}
 				/// Stergerea vechilor grafice.
-				DeleteGraphPlot(panel, PANEL_RAW_DATA_GRAPH, -1, VAL_IMMEDIATE_DRAW);
-				DeleteGraphPlot(panel, PANEL_FILTERED_DATA_GRAPH, -1, VAL_IMMEDIATE_DRAW);
-				/// Reafisarea noilor grafice.
-				PlotY(panel, PANEL_RAW_DATA_GRAPH, waveData+count*(int)sampleRate, sampleRate,VAL_DOUBLE, VAL_THIN_LINE, VAL_EMPTY_SQUARE, VAL_SOLID, VAL_CONNECTED_POINTS, VAL_RED);
-				if (filtered)
-					PlotY(panel, PANEL_FILTERED_DATA_GRAPH, waveFiltered+count*(int)sampleRate, sampleRate,VAL_DOUBLE, VAL_THIN_LINE, VAL_EMPTY_SQUARE, VAL_SOLID, VAL_CONNECTED_POINTS, VAL_RED);
-				/// Afisarea noilor Min, Max, Medie, Dispersie, Mediana. 
-				MinMaxMed (panel);
+				if (panel==acqPanel)
+					updateAcqPanel();
+				else updateWavePanel();
+/// Afisarea noilor Min, Max, Medie, Dispersie, Mediana. 
+				MinMaxMed (acqPanel);
+			break;
+	}
+	return 0;
+}
+
+int CVICALLBACK OnSwitchCB (int panel, int control, int event,
+							void *callbackData, int eventData1, int eventData2)
+{
+	switch (event) {
+		case EVENT_COMMIT:
+			if (panel==acqPanel) {
+				SetCtrlVal(wavePanel,AcqPanel_Switch_Tabs,1);
+				DisplayPanel(wavePanel);
+				HidePanel(acqPanel);
+				updateWavePanel();
+			}
+			else {
+				SetCtrlVal(acqPanel,AcqPanel_Switch_Tabs,0);
+				DisplayPanel(acqPanel);
+				HidePanel(wavePanel);
+				updateAcqPanel();
+			}
 			break;
 	}
 	return 0;

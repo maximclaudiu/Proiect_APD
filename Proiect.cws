@@ -12,11 +12,11 @@ VXIplug&play Framework 64-bit Dir = "/C/Program Files/IVI Foundation/VISA/win64"
 Number of Projects = 1
 Active Project = 1
 Project 0001 = "Proiect.prj"
-Drag Bar Left = 126
+Drag Bar Left = 98
 Window Top = 31
 Window Left = 1
 Window Bottom = 1039
-Window Right = 1233
+Window Right = 1155
 Maximized = False
 Maximized Children = True
 Max32 Number Of Errors = 20
@@ -32,7 +32,7 @@ Break At First Statement = False
 Sort Type = "File Name"
 Number of Opened Files = 3
 Window Confinement Region Enabled = True
-MainColumnWidth = 109
+MainColumnWidth = 81
 FileDateColumnWidth = 70
 FileSizeColumnWidth = 70
 
@@ -48,20 +48,20 @@ Batch Build Debug = False
 [File 0001]
 Path = "/f/achizitia_si_prelucrarea_datelor/Proiect_APD/Proiect.uir"
 File Type = "User Interface Resource"
-Disk Date = 3687610544
+Disk Date = 3691159901
 In Projects = "1,"
 Window Top = 64
 Window Left = 26
 Window Height = 401
 Window Width = 602
-Window Z-Order = 3
+Window Z-Order = 2
 
 [File 0002]
 Path = "/f/achizitia_si_prelucrarea_datelor/Proiect_APD/Proiect.c"
 File Type = "CSource"
-Disk Date = 3688212468
+Disk Date = 3691160154
 In Projects = "1,"
-Source Window State = "1,231,231,231,5,5,5,0,0,0,0,0,0,0,0,0,212,0,231,5,401,602,1,0,"
+Source Window State = "1,225,225,225,17,17,17,0,0,0,0,0,0,0,0,0,199,0,225,17,401,602,1,0,"
 Window Top = 250
 Window Left = 122
 Window Z-Order = 1
@@ -69,18 +69,17 @@ Window Z-Order = 1
 [File 0003]
 Path = "/f/achizitia_si_prelucrarea_datelor/Proiect_APD/Proiect.h"
 File Type = "Include"
-Disk Date = 3687610544
+Disk Date = 3691159901
 In Projects = "1,"
-Source Window State = "1,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,401,602,1,0,"
-Window Top = 281
-Window Left = 138
-Window Z-Order = 2
+Source Window State = "1,34,34,34,0,0,0,0,0,0,0,0,0,0,0,0,5,0,34,0,401,609,1,0,"
+Window Top = 95
+Window Left = 42
+Window Z-Order = 3
 
 [File 0004]
-Path Line0001 = "/f/achizitia_si_prelucrarea_datelor/Proiect_APD/cvibuild.Proiect/Debug/Proiect.o"
-Path Line0002 = "bj"
+Path = "/f/achizitia_si_prelucrarea_datelor/proiect/cvibuild.Proiect/Debug/Proiect.obj"
 File Type = "Object"
-Disk Date = 3688206726
+Disk Date = 3687600734
 In Projects = "1,"
 
 [Tab Order]
