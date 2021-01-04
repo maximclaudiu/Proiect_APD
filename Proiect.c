@@ -33,7 +33,8 @@ int wavePanel=0;
 double min, max, sum, median;
 double alpha;
 static int minInd, maxInd;
-int count=0, filtered=0;
+int count=0, filtered=0, filtered2=0;
+int nrPoints=0;
 int opt;
 //==============================================================================
 // Static functions
@@ -45,15 +46,16 @@ int waveInfo[2]; //waveInfo[0] = sampleRate
 double sampleRate = 0.0;
 int npoints = 0;
 
-double *waveData = 0;
-double *specterData=0;
+double *waveData = 0; //
 double *waveFiltered = 0;
 double *freqFiltered=0;
 double *specterFiltered =0;
+double *CosArray=0;
 
-double df=0;
+double ripple=0;
 double searchFreq=0, df1=0;
-double *autoSpectrum=NULL, freqPeak=0, powerPeak=0, *convertedSpectrum=NULL;
+double  freqPeak=0, powerPeak=0,
+	freqPeak2=0, powerPeak2=0,*convertedSpectrum=NULL;
 
 WindowConst winConst;
 //==============================================================================
@@ -126,6 +128,9 @@ int CVICALLBACK panelCB (int panel, int event, void *callbackData,
 void FrequencyFilter (int mainPanel, double *waveData, int npoints)
 {
 	char unit[32]="V";
+	double *autoSpectrum=NULL, *autoSpectrum2=NULL;
+	double df=0;
+	
 	ScaledWindowEx(waveData,npoints,RECTANGLE_, 0, &winConst);
 	if (autoSpectrum != NULL) 
 		free(autoSpectrum);
@@ -133,25 +138,41 @@ void FrequencyFilter (int mainPanel, double *waveData, int npoints)
 	if (convertedSpectrum != NULL)
 		free(convertedSpectrum);
 	convertedSpectrum = (double *) calloc(npoints, sizeof(double));
+	
 	AutoPowerSpectrum (waveData, npoints, 1, autoSpectrum, &df);
 	PowerFrequencyEstimate( autoSpectrum, npoints, searchFreq, winConst, df, 100, &freqPeak, &powerPeak);
 	SpectrumUnitConversion(autoSpectrum,npoints, 0, SCALING_MODE_LINEAR, DISPLAY_UNIT_VRMS, df, winConst, convertedSpectrum, unit);
-	PlotWaveform( mainPanel, WavePanel_Specter_Graph, convertedSpectrum, npoints/4 ,VAL_DOUBLE, 1.0, 0.0, 0.0, 1, VAL_THIN_LINE, VAL_EMPTY_SQUARE, VAL_SOLID,  VAL_CONNECTED_POINTS, VAL_DK_GREEN);
+	PlotWaveform( mainPanel, WavePanel_Specter_Graph, convertedSpectrum+count*(int)sampleRate, sampleRate/4 ,VAL_DOUBLE, 1.0, 0.0, 0.0, 1, VAL_THIN_LINE, VAL_EMPTY_SQUARE, VAL_SOLID,  VAL_CONNECTED_POINTS, VAL_DK_GREEN);
+	
+	if (filtered2) {
+		df=0;
+		if (autoSpectrum2 != NULL) 
+			free(autoSpectrum2);
+		autoSpectrum2 = (double *) calloc(npoints, sizeof(double));
+		if (specterFiltered != NULL)
+			free (specterFiltered);
+		specterFiltered = (double *) calloc(npoints, sizeof(double));
+		
+		AutoPowerSpectrum(freqFiltered, npoints, 1, autoSpectrum2,&df);
+		PowerFrequencyEstimate( autoSpectrum2, npoints, searchFreq, winConst, df, 100, &freqPeak2, &powerPeak2);
+		SpectrumUnitConversion(autoSpectrum2,npoints, 0, SCALING_MODE_LINEAR, DISPLAY_UNIT_VRMS, df, winConst, specterFiltered, unit);
+		PlotWaveform( mainPanel, WavePanel_Specter_Graph_Filter, specterFiltered+count*(int)sampleRate, sampleRate/4 ,VAL_DOUBLE, 1.0, 0.0, 0.0, 1, VAL_THIN_LINE, VAL_EMPTY_SQUARE, VAL_SOLID,  VAL_CONNECTED_POINTS, VAL_DK_GREEN);
+	}
 }
 
 //==============================================================================
 
 void updateWavePanel() {
 	DeleteGraphPlot(wavePanel, WavePanel_Freq_Graph, -1, VAL_IMMEDIATE_DRAW);
-	DeleteGraphPlot(wavePanel, WavePanel_Freq_Graph_Filter, -1, VAL_IMMEDIATE_DRAW);
-	if (filtered)
+	DeleteGraphPlot(wavePanel, WavePanel_Specter_Graph, -1, VAL_IMMEDIATE_DRAW);
+	if (filtered2)
 	{
-		DeleteGraphPlot(wavePanel, WavePanel_Specter_Graph, -1, VAL_IMMEDIATE_DRAW);
-	//	DeleteGraphPlot(wavePanel, WavePanel_Specter_Graph_filter, -1, VAL_IMMEDIATE_DRAW);
+		DeleteGraphPlot(wavePanel, WavePanel_Freq_Graph_Filter, -1, VAL_IMMEDIATE_DRAW);
+		DeleteGraphPlot(wavePanel, WavePanel_Specter_Graph_Filter, -1, VAL_IMMEDIATE_DRAW);
 	}
 	FrequencyFilter(wavePanel,waveData,npoints);
 	PlotY(wavePanel, WavePanel_Freq_Graph, waveData+count*(int)sampleRate, sampleRate,VAL_DOUBLE, VAL_THIN_LINE, VAL_EMPTY_SQUARE, VAL_SOLID, VAL_CONNECTED_POINTS, VAL_RED);
-	if (filtered)
+	if (filtered2)
 		PlotY(wavePanel, WavePanel_Freq_Graph_Filter, freqFiltered+count*(int)sampleRate, sampleRate,VAL_DOUBLE, VAL_THIN_LINE, VAL_EMPTY_SQUARE, VAL_SOLID, VAL_CONNECTED_POINTS, VAL_RED);
 }
 
@@ -190,8 +211,11 @@ int CVICALLBACK OnLoadButtonAcqCB (int panel, int control, int event,
 			/// Incarcare din fisierul .txt in memorie (vector)
 			FileToArray("waveData.txt", waveData, VAL_DOUBLE, npoints, 1, VAL_GROUPS_TOGETHER, VAL_GROUPS_AS_COLUMNS, VAL_ASCII);
 			
+			for (int i=count*(int)sampleRate;i<sampleRate;i++)
+				if ((waveData[i]>=0&&waveData[i+1]<=0)||(waveData[i]<=0&&waveData[i+1]>=0))
+					nrPoints++;
+			SetCtrlVal(wavePanel, WavePanel_NPoints, nrPoints);
 			/// Afisare pe grapf
-		
 			updateAcqPanel();
 			updateWavePanel();
 			/// Afisare Min, Max, Medie, Dispersie, Mediana.
@@ -209,23 +233,22 @@ int CVICALLBACK ApplyCB (int panel, int control, int event,
 {
 	switch (event) {
 		case EVENT_COMMIT:
-			int choice;
+			int filtru;
 			filtered=1;
-			/// Stergerea graficului vechi.
 			waveFiltered = (double *) calloc(npoints, sizeof(double));
-			GetCtrlVal(acqPanel, AcqPanel_Filtru, &choice);
+			GetCtrlVal(acqPanel, AcqPanel_Filtru, &filtru);
 			/// Alegerea optiunii de filtrare.
-			if (choice ==16 || choice ==32)	{	
+			if (filtru ==16 || filtru ==32)	{	
 				/// Filtrele de mediere pe 16 si 32.
-				for (int i=0;i<npoints-choice;i++) {
+				for (int i=0;i<npoints-filtru;i++) {
 					int sum2=0;
-					for (int j=i;j<i+choice;j++)
+					for (int j=i;j<i+filtru;j++)
 						sum2=sum2+waveData[j];
-					sum2=sum2/choice;
+					sum2=sum2/filtru;
 					waveFiltered[i]=sum2;
 				}
 			}
-			else if (choice ==0) {
+			else if (filtru ==0) {
 				/// Filtrul de ordin I.
 				GetCtrlVal(panel, AcqPanel_ALPHA, &alpha);
 	            for(int i = 1; i<npoints; i++)
@@ -237,6 +260,43 @@ int CVICALLBACK ApplyCB (int panel, int control, int event,
 			else updateWavePanel();
 			break;
 	}
+	return 0;
+}
+
+//==============================================================================
+
+int CVICALLBACK ApplyFreqCB (int panel, int control, int event,
+							 void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_COMMIT:
+			int choice, window;
+			filtered2=1;
+			freqFiltered = (double *) calloc(npoints, sizeof(double));
+			CosArray = (double *) calloc(100, sizeof(double));
+			for (int i=0;i<100;i++)
+				CosArray[i]=1;
+			GetCtrlVal(wavePanel, WavePanel_Filtru_freq, &choice);
+			if (choice==1) {
+				Bw_LPF(waveData, npoints, sampleRate, sampleRate/6, 5, freqFiltered);
+			}
+			else {
+				GetCtrlVal(wavePanel, WavePanel_Ripple, &ripple);
+				Ch_LPF(waveData, npoints, sampleRate, sampleRate/8, ripple, 5, freqFiltered);
+			}
+			GetCtrlVal(wavePanel, WavePanel_Fereastra, &window);
+			if (window==2){
+				GenCosWin(freqFiltered,npoints, CosArray, 100);
+			}
+			else {
+				KsrWin (freqFiltered,npoints, 3.86);
+			}
+			if (panel==acqPanel)
+				updateAcqPanel();
+			else updateWavePanel();
+			break;
+	}	
 	return 0;
 }
 
@@ -262,6 +322,12 @@ int CVICALLBACK PrevCB (int panel, int control, int event,
 				else updateWavePanel();
 				/// Afisarea noilor Min, Max, Medie, Dispersie, Mediana. 
 				MinMaxMed (acqPanel);
+				nrPoints=0;
+				
+				for (int i=count*(int)sampleRate;i<count*(int)sampleRate+sampleRate;i++)
+					if ((waveData[i]>=0&&waveData[i+1]<=0)||(waveData[i]<=0&&waveData[i+1]>=0))
+						nrPoints++;
+				SetCtrlVal(wavePanel, WavePanel_NPoints, nrPoints);
 			break;
 	}
 	return 0;
@@ -274,20 +340,25 @@ int CVICALLBACK NextCB (int panel, int control, int event,
 {
 	switch (event) {
 		case EVENT_COMMIT:
-				/// Verificare si actualizare pagina actuala.
-				GetCtrlVal(panel, AcqPanel_Stop, &count);
-				if (count<5) {
-					SetCtrlVal(acqPanel, AcqPanel_Start, count );
-					SetCtrlVal(acqPanel, AcqPanel_Stop, count+1);
-					SetCtrlVal(wavePanel, WavePanel_Start, count );
-					SetCtrlVal(wavePanel, WavePanel_Stop, count+1);
-				}
-				/// Stergerea vechilor grafice.
-				if (panel==acqPanel)
-					updateAcqPanel();
-				else updateWavePanel();
-/// Afisarea noilor Min, Max, Medie, Dispersie, Mediana. 
-				MinMaxMed (acqPanel);
+			/// Verificare si actualizare pagina actuala.
+			GetCtrlVal(panel, AcqPanel_Stop, &count);
+			if (count<5) {
+				SetCtrlVal(acqPanel, AcqPanel_Start, count );
+				SetCtrlVal(acqPanel, AcqPanel_Stop, count+1);
+				SetCtrlVal(wavePanel, WavePanel_Start, count );
+				SetCtrlVal(wavePanel, WavePanel_Stop, count+1);
+			}
+			/// Stergerea vechilor grafice.
+			if (panel==acqPanel)
+				updateAcqPanel();
+			else updateWavePanel();
+			/// Afisarea noilor Min, Max, Medie, Dispersie, Mediana. 
+			MinMaxMed (acqPanel);
+			nrPoints=0;
+			for (int i=count*(int)sampleRate;i<count*(int)sampleRate+sampleRate;i++)
+				if ((waveData[i]>=0&&waveData[i+1]<=0)||(waveData[i]<=0&&waveData[i+1]>=0))
+					nrPoints++;
+			SetCtrlVal(wavePanel, WavePanel_NPoints, nrPoints);
 			break;
 	}
 	return 0;
@@ -314,3 +385,33 @@ int CVICALLBACK OnSwitchCB (int panel, int control, int event,
 	}
 	return 0;
 }
+
+int CVICALLBACK OnChangeRipple (int panel, int control, int event,
+								void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_COMMIT:
+			GetCtrlVal (wavePanel, WavePanel_Ripple, &ripple);
+			SetCtrlVal (wavePanel, WavePanel_Ripple, ripple);
+			break;
+	}
+	return 0;
+}
+
+int CVICALLBACK OnChangeFilter (int panel, int control, int event,
+								void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_COMMIT:
+			GetCtrlVal(wavePanel, WavePanel_Filtru_freq, &opt);
+			if (opt==2)
+				SetCtrlAttribute(wavePanel, WavePanel_Ripple, ATTR_VISIBLE, 1);
+			else SetCtrlAttribute(wavePanel, WavePanel_Ripple, ATTR_VISIBLE, 0);
+			
+			break;
+	}
+	return 0;
+}
+

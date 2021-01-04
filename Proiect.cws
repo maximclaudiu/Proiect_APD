@@ -12,11 +12,11 @@ VXIplug&play Framework 64-bit Dir = "/C/Program Files/IVI Foundation/VISA/win64"
 Number of Projects = 1
 Active Project = 1
 Project 0001 = "Proiect.prj"
-Drag Bar Left = 98
+Drag Bar Left = 147
 Window Top = 31
-Window Left = 1
+Window Left = 2
 Window Bottom = 1039
-Window Right = 1155
+Window Right = 1156
 Maximized = False
 Maximized Children = True
 Max32 Number Of Errors = 20
@@ -32,7 +32,7 @@ Break At First Statement = False
 Sort Type = "File Name"
 Number of Opened Files = 3
 Window Confinement Region Enabled = True
-MainColumnWidth = 81
+MainColumnWidth = 130
 FileDateColumnWidth = 70
 FileSizeColumnWidth = 70
 
@@ -48,30 +48,30 @@ Batch Build Debug = False
 [File 0001]
 Path = "/f/achizitia_si_prelucrarea_datelor/Proiect_APD/Proiect.uir"
 File Type = "User Interface Resource"
-Disk Date = 3691159901
+Disk Date = 3691581683
 In Projects = "1,"
 Window Top = 64
 Window Left = 26
 Window Height = 401
 Window Width = 602
-Window Z-Order = 2
+Window Z-Order = 1
 
 [File 0002]
 Path = "/f/achizitia_si_prelucrarea_datelor/Proiect_APD/Proiect.c"
 File Type = "CSource"
-Disk Date = 3691160154
+Disk Date = 3691578138
 In Projects = "1,"
-Source Window State = "1,225,225,225,17,17,17,0,0,0,0,0,0,0,0,0,199,0,225,17,401,602,1,0,"
+Source Window State = "1,149,149,149,32,32,32,0,0,0,0,0,0,0,0,0,149,0,149,32,401,602,1,0,"
 Window Top = 250
 Window Left = 122
-Window Z-Order = 1
+Window Z-Order = 2
 
 [File 0003]
 Path = "/f/achizitia_si_prelucrarea_datelor/Proiect_APD/Proiect.h"
 File Type = "Include"
-Disk Date = 3691159901
+Disk Date = 3691496612
 In Projects = "1,"
-Source Window State = "1,34,34,34,0,0,0,0,0,0,0,0,0,0,0,0,5,0,34,0,401,609,1,0,"
+Source Window State = "1,68,68,68,17,31,17,0,3,0,0,0,0,0,0,0,25,0,68,31,401,609,1,0,"
 Window Top = 95
 Window Left = 42
 Window Z-Order = 3

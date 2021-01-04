@@ -40,13 +40,14 @@
 #define  WavePanel_Stop                   6       /* control type: numeric, callback function: (none) */
 #define  WavePanel_Start                  7       /* control type: numeric, callback function: (none) */
 #define  WavePanel_Interval               8       /* control type: textMsg, callback function: (none) */
-#define  WavePanel_Specter_Graph_filter   9       /* control type: graph, callback function: (none) */
+#define  WavePanel_Specter_Graph_Filter   9       /* control type: graph, callback function: (none) */
 #define  WavePanel_Specter_Graph          10      /* control type: graph, callback function: (none) */
 #define  WavePanel_Freq_Graph             11      /* control type: graph, callback function: (none) */
 #define  WavePanel_NPoints                12      /* control type: numeric, callback function: (none) */
-#define  WavePanel_ALPHA                  13      /* control type: numeric, callback function: (none) */
-#define  WavePanel_Aplica_Button          14      /* control type: command, callback function: ApplyCB */
-#define  WavePanel_Filtru_freq            15      /* control type: ring, callback function: (none) */
+#define  WavePanel_Ripple                 13      /* control type: numeric, callback function: OnChangeRipple */
+#define  WavePanel_Aplica_Button          14      /* control type: command, callback function: ApplyFreqCB */
+#define  WavePanel_Fereastra              15      /* control type: ring, callback function: (none) */
+#define  WavePanel_Filtru_freq            16      /* control type: ring, callback function: OnChangeFilter */
 
 
      /* Control Arrays: */
@@ -62,7 +63,10 @@
      /* Callback Prototypes: */
 
 int  CVICALLBACK ApplyCB(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK ApplyFreqCB(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK NextCB(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK OnChangeFilter(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK OnChangeRipple(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK OnLoadButtonAcqCB(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK OnSwitchCB(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK panelCB(int panel, int event, void *callbackData, int eventData1, int eventData2);

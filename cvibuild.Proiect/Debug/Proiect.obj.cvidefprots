@@ -1,55 +1,70 @@
 [MinMaxMed]
 Class="Function"
 Prototype="void MinMaxMed(int panel);"
-SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:62:6"
+SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:64:6"
 
 [main]
 Class="Function"
 Prototype="int main(int argc, char *argv[]);"
-SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:84:5"
+SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:86:5"
 
 [panelCB]
 Class="Function"
 Prototype="int panelCB(int panel, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:107:17"
+SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:109:17"
 
 [FrequencyFilter]
 Class="Function"
 Prototype="void FrequencyFilter(int mainPanel, double *waveData, int npoints);"
-SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:126:6"
+SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:128:6"
 
 [updateWavePanel]
 Class="Function"
 Prototype="void updateWavePanel();"
-SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:144:6"
+SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:165:6"
 
 [updateAcqPanel]
 Class="Function"
 Prototype="void updateAcqPanel();"
-SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:159:6"
+SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:181:6"
 
 [OnLoadButtonAcqCB]
 Class="Function"
 Prototype="int OnLoadButtonAcqCB(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:170:17"
+SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:192:17"
 
 [ApplyCB]
 Class="Function"
 Prototype="int ApplyCB(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:206:17"
+SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:231:17"
+
+[ApplyFreqCB]
+Class="Function"
+Prototype="int ApplyFreqCB(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:268:17"
 
 [PrevCB]
 Class="Function"
 Prototype="int PrevCB(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:244:17"
+SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:305:17"
 
 [NextCB]
 Class="Function"
 Prototype="int NextCB(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:271:17"
+SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:338:17"
 
 [OnSwitchCB]
 Class="Function"
 Prototype="int OnSwitchCB(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:295:17"
+SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:367:17"
+
+[OnChangeRipple]
+Class="Function"
+Prototype="int OnChangeRipple(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:389:17"
+
+[OnChangeFilter]
+Class="Function"
+Prototype="int OnChangeFilter(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="f:\achizitia_si_prelucrarea_datelor\Proiect_APD\Proiect.c:402:17"
 
